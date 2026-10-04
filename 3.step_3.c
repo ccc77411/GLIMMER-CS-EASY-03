@@ -94,20 +94,20 @@ TreeNode *pop(Stack *stack) {               //定义了一个出栈的函数
     return stack->arr[stack->top--];             //返回存在栈中的元素即出栈
 }
 
-void preorderTraversal(TreeNode *root) {         // 补全这个函数
-    int capacity=7;
-    Stack*stack=createStack(capacity);
-    TreeNode*p=root;
-    while(p!=NULL||!isEmpty(stack)){
-    while (p!=NULL)
+void preorderTraversal(TreeNode *root) {         
+    int capacity=100;                    //定义栈的容量，这里随手定义了100.
+    Stack*stack=createStack(capacity);    //创建栈结构体
+    TreeNode*p=root;                       //定义个指针代替根指针移动
+    while(p!=NULL||!isEmpty(stack)){       //判断是否为空节点或是否栈为空
+    while (p!=NULL)                      //判断是否左边走到叶节点
     {  
-       printf("%d ",p->data); 
-       push(stack, p); 
+       printf("%d ",p->data);  
+       push(stack, p);                   //入栈
        p=p->left;
 
     }
-    p=pop(stack);
-    p=p->right;
+    p=pop(stack);                      //出栈，回到上一存储的节点
+    p=p->right;                        //向右移动
 }
 }
 
